@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webexample
+spec:
+  selector:
+    matchLabels:
+      app: webexample
+  template:
+    metadata:
+      labels:
+        app: webexample
+        version: v1
+    spec:
+      securityContext:
+        runAsUser: 0
+        fsGroup: 0
+      containers:
+        - name: container1
+          image: avail.azurecr.io/webexample:latest
+          env:
+            - name: container
+              value: CONTAINER1
